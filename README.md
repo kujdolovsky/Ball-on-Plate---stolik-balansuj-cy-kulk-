@@ -61,14 +61,16 @@ Celem było stabilizowanie kulki w zadanym punkcie oraz realizacja prostych traj
 ## 🌀 Demo wideo (kliknij, aby obejrzeć)
 Układ stabilizuje kulkę, kompensuje zakłócenia oraz realizuje zadane trajektorie ruchu.
 
-### Trajektoria kulki
+### Reakcja na zakłócenia
+[![Demo](https://img.youtube.com/vi/wO5LeluoGk4/0.jpg)](https://www.youtube.com/watch?v=wO5LeluoGk4)
+
+### Trajektoria Prostokąta
 [![Trajektoria](https://img.youtube.com/vi/QgTJa6kDOz0/0.jpg)](https://www.youtube.com/watch?v=QgTJa6kDOz0)
 
-### Reakcja na zakłócenia
+### Trajektoria koła
 [![Zakłócenia](https://img.youtube.com/vi/Sv3K1zqYGdE/0.jpg)](https://www.youtube.com/watch?v=Sv3K1zqYGdE)
 
-### Stabilizacja i docisk kulki
-[![Demo](https://img.youtube.com/vi/wO5LeluoGk4/0.jpg)](https://www.youtube.com/watch?v=wO5LeluoGk4)
+
 
 ---
 
