@@ -1,82 +1,78 @@
-# Stolik balansujący kulką (Ball on Plate)
+# Ball-on-Plate System (3RRS Manipulator)
 
-## 📌 Opis
-Projekt układu sterowania stolikiem balansującym kulką z wykorzystaniem manipulatora 3RRS, regulatora PID oraz mikrokontrolera Arduino UNO.  
-Celem było stabilizowanie kulki w zadanym punkcie oraz realizacja prostych trajektorii ruchu.
+## 📌 Overview
+This project presents a control system for a ball-on-plate setup using a 3RRS parallel manipulator, PID controller and an Arduino UNO microcontroller.  
+The objective was to stabilize the ball at a desired position and to track simple motion trajectories.
 
 <img width="300" src="https://github.com/user-attachments/assets/5a16e375-8e2b-4d3b-a7fc-4d6dcec1f0aa" />
 
 ---
 
-## 🎯 Cel projektu
-- stabilizacja kulki w punkcie (0,0)
-- implementacja regulatora PID w dwóch osiach
-- realizacja trajektorii (okrąg, kwadrat)
-- implementacja algorytmu na rzeczywistym układzie
+## 🎯 Objectives
+- Stabilization of the ball at position (0,0)
+- Implementation of PID control in two axes
+- Trajectory tracking (circle, square)
+- Implementation on a real physical system
 
 ---
 
-## 🛠️ Narzędzia
-- Matlab / Simulink
+## 🛠️ Tools & Technologies
+- MATLAB / Simulink
 - Arduino IDE (C++)
-- Filtracja sygnału (FIR)
+- Signal filtering (FIR)
 
 ---
 
-## 🧠 Co zrobiłem
-- opracowałem model matematyczny układu
-- dobrałem nastawy regulatora PID
-- zaimplementowałem sterowanie silnikami krokowymi
-- napisałem algorytm odczytu pozycji kulki
-- zaprojektowałem filtr FIR do przetwarzania sygnału
-- przeanalizowałem możliwość zastosowania regulatora ADRC
+## 🧠 My Contributions
+- Developed a mathematical model of the system
+- Tuned PID controller parameters
+- Implemented stepper motor control
+- Developed a ball position detection algorithm
+- Designed an FIR filter for signal processing
+- Analyzed the potential application of ADRC control
 
 ---
 
-## 📊 Wyniki
+## 📊 Results
 
-### Odpowiedź skokowa
-- czas regulacji: ~2 s dla skoku 25 mm
-- test dla przejścia z (25,25) → (0,0)
+### Step Response
+- Settling time: ~2 s for a 25 mm step
+- Test case: transition from (25,25) → (0,0)
 
 <img width="400" src="https://github.com/user-attachments/assets/6be00de1-8fcb-4ea3-a438-ef2cae340720" />
 
 ---
 
-### Odporność na zakłócenia
-- układ stabilizuje kulkę po zaburzeniu (pchnięcie)
+### Disturbance Rejection
+- The system stabilizes the ball after external disturbance (manual push)
 
 <img width="400" src="https://github.com/user-attachments/assets/662a6bfb-986c-46cd-9281-b41ddc3d0b15" />
 
 ---
 
-### Trajektorie ruchu
-- poprawna realizacja ruchu po okręgu i kwadracie
-- ograniczona dokładność
+### Trajectory Tracking
+- Successful tracking of circular and square trajectories
+- Limited accuracy observed
 
 <img width="300" src="https://github.com/user-attachments/assets/6d6e8734-25c3-461f-b381-3cc0a7beb066" />
 
 ---
 
-## 🌀 Demo wideo (kliknij, aby obejrzeć)
-Układ stabilizuje kulkę, kompensuje zakłócenia oraz realizuje zadane trajektorie ruchu.
+## 🎥 Video Demonstration
+The system stabilizes the ball, compensates disturbances and follows predefined trajectories.
 
-### Reakcja na zakłócenia
+### Disturbance Rejection
 [![Demo](https://img.youtube.com/vi/wO5LeluoGk4/0.jpg)](https://www.youtube.com/watch?v=wO5LeluoGk4)
 
-### Trajektoria Prostokąta
-[![Trajektoria](https://img.youtube.com/vi/QgTJa6kDOz0/0.jpg)](https://www.youtube.com/watch?v=QgTJa6kDOz0)
+### Square Trajectory
+[![Trajectory](https://img.youtube.com/vi/QgTJa6kDOz0/0.jpg)](https://www.youtube.com/watch?v=QgTJa6kDOz0)
 
-### Trajektoria koła
-[![Zakłócenia](https://img.youtube.com/vi/Sv3K1zqYGdE/0.jpg)](https://www.youtube.com/watch?v=Sv3K1zqYGdE)
-
-
+### Circular Trajectory
+[![Disturbance](https://img.youtube.com/vi/Sv3K1zqYGdE/0.jpg)](https://www.youtube.com/watch?v=Sv3K1zqYGdE)
 
 ---
 
-## 📉 Ograniczenia
-- odchyłka statyczna do ~5 mm w stanie ustalonym
-- ograniczona dokładność kreślenia trajektorii
-- czas pracy urządzenia z uwagi na wydzielane ciepło
-
-
+## 📉 Limitations
+- Steady-state error up to ~5 mm
+- Limited trajectory tracking accuracy
+- Limited operating time due to heat generation
