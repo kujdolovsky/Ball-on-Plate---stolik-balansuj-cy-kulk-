@@ -1,78 +1,110 @@
-# Ball-on-Plate System (3RRS Manipulator)
+# Brake Pedal Design and FEA Simulation for BAJA SAE Vehicle
 
-## 📌 Overview
-This project presents a control system for a ball-on-plate setup using a 3RRS parallel manipulator, PID controller and an Arduino UNO microcontroller.  
-The objective was to stabilize the ball at a desired position and to track simple motion trajectories.
+## Project Overview
+This project presents the **design, optimization, and structural verification** of a lightweight brake pedal assembly for a BAJA SAE vehicle.  
 
-<img width="300" src="https://github.com/user-attachments/assets/5a16e375-8e2b-4d3b-a7fc-4d6dcec1f0aa" />
+A **Finite Element Analysis (FEA)** was conducted to validate structural integrity under realistic loading conditions while maintaining minimal mass and manufacturability.
 
----
-
-## 🎯 Objectives
-- Stabilization of the ball at position (0,0)
-- Implementation of PID control in two axes
-- Trajectory tracking (circle, square)
-- Implementation on a real physical system
+![Brake pedal CAD model](https://github.com/user-attachments/assets/598a4884-95ae-4fd5-9efe-03baa3ac3c71)
+*Figure 1: CAD model of the brake pedal assembly*
 
 ---
 
-## 🛠️ Tools & Technologies
-- MATLAB / Simulink
-- Arduino IDE (C++)
-- Signal filtering (FIR)
+## Design Objectives
+The brake pedal was designed to meet the following engineering requirements:
+
+- Mechanical advantage ratio: **3:1**  
+- Maximum applied load: **2 kN**  
+- Minimum safety factor: **≥ 1.5**  
+- Target mass: **< 300 g**  
+- Manufacturable on a **3-axis CNC machine** with simple geometry  
 
 ---
 
-## 🧠 My Contributions
-- Developed a mathematical model of the system
-- Tuned PID controller parameters
-- Implemented stepper motor control
-- Developed a ball position detection algorithm
-- Designed an FIR filter for signal processing
-- Analyzed the potential application of ADRC control
+## Tools & Technologies
+- **CAD Modeling:** Autodesk Inventor / SolidWorks  
+- **FEA Simulation:** ANSYS Workbench (Static Structural)  
+- **Analysis Type:** Linear static structural analysis  
 
 ---
 
-## 📊 Results
-
-### Step Response
-- Settling time: ~2 s for a 25 mm step
-- Test case: transition from (25,25) → (0,0)
-
-<img width="400" src="https://github.com/user-attachments/assets/6be00de1-8fcb-4ea3-a438-ef2cae340720" />
-
----
-
-### Disturbance Rejection
-- The system stabilizes the ball after external disturbance (manual push)
-
-<img width="400" src="https://github.com/user-attachments/assets/662a6bfb-986c-46cd-9281-b41ddc3d0b15" />
+## My Contributions
+- Developed **3D CAD model** of the brake pedal  
+- Performed **FEA simulation** to verify stress, deformation, and safety factor  
+- Optimized geometry for **weight reduction** and **stress distribution**  
+- Verified **mass of the pedal assembly** (0.247 kg)  
+- Prepared the design for **physical manufacturing**  
 
 ---
 
-### Trajectory Tracking
-- Successful tracking of circular and square trajectories
-- Limited accuracy observed
+## Boundary Conditions & Loading
+- **Symmetry** applied to reduce computational cost  
 
-<img width="300" src="https://github.com/user-attachments/assets/6d6e8734-25c3-461f-b381-3cc0a7beb066" />
+### Symmetry
+- Only **half of the pedal was modeled** due to symmetry along the vertical plane  
+- This approach **reduces computational complexity** and number of elements in the mesh  
+- Applied **symmetry boundary condition** on the cut plane to represent the full pedal  
+
+### Supports
+- Cylindrical supports at pivot locations  
+- Fixed supports at mounting interfaces  
+
+![Boundary conditions](https://github.com/user-attachments/assets/3e04c71b-9af5-4fb3-bb5e-a54dafef58ce)
+*Figure 2: Boundary conditions and support locations used in FEA*
+
+### Applied Loads
+- **1000 N applied to the half-model**, representing a total load of **2 kN**  
+- Contact definitions:
+  - Bonded contacts  
+  - Frictional contacts (μ = 1.0) between pedal pad and arm  
+
+![Load application](https://github.com/user-attachments/assets/676769ef-24e0-44c9-8a73-44615e678ae1)
+*Figure 3: Load application on the brake pedal*
 
 ---
 
-## 🎥 Video Demonstration
-The system stabilizes the ball, compensates disturbances and follows predefined trajectories.
+## Results
 
-### Disturbance Rejection
-[![Demo](https://img.youtube.com/vi/wO5LeluoGk4/0.jpg)](https://www.youtube.com/watch?v=wO5LeluoGk4)
+### CAD Model and Design Evolution
+![Previous and final pedal versions](https://github.com/user-attachments/assets/83f2363b-c1a9-40f7-8c3f-358056254787)
+*Figure 4: Previous and final versions of the pedal designed in Inventor*
 
-### Square Trajectory
-[![Trajectory](https://img.youtube.com/vi/QgTJa6kDOz0/0.jpg)](https://www.youtube.com/watch?v=QgTJa6kDOz0)
+### Mesh Convergence
+![Final mesh](https://github.com/user-attachments/assets/bbd04676-5a56-4bf8-96f3-06dcb25e55f6)
+*Figure 5: Final mesh with 120,295 nodes and 33,088 elements*
 
-### Circular Trajectory
-[![Disturbance](https://img.youtube.com/vi/Sv3K1zqYGdE/0.jpg)](https://www.youtube.com/watch?v=Sv3K1zqYGdE)
+### Stress Analysis (von Mises)
+![Von-Mises stress distribution](https://github.com/user-attachments/assets/91148a64-c91f-4e4a-884f-d6605f2bc7d1)
+*Figure 6: Von-Mises stress distribution; max stress = 102.65 MPa*
+
+### Deformation & Safety Factor
+![Total deformation](https://github.com/user-attachments/assets/367ef497-e41c-4bc1-a2ad-05755f7be24d)
+*Figure 7: Total deformation under maximum load (~1.07 mm)*
+
+![Safety factor distribution](https://github.com/user-attachments/assets/bfb079a7-5fc2-4953-9d5f-e79bc54f4fc4)
+*Figure 8: Minimum safety factor = 1.57*
+
+### Mass Verification
+- Total mass: **0.247 kg**  
+- ✅ Below target 300 g, competitive with commercial pedals  
 
 ---
 
-## 📉 Limitations
-- Steady-state error up to ~5 mm
-- Limited trajectory tracking accuracy
-- Limited operating time due to heat generation
+## Limitations & Sensitivity
+- Fully fixed support at pivot leads to local stress up to **131.05 MPa**  
+- Results depend on:
+  - Contact assumptions  
+  - Boundary condition simplifications  
+  - Linear material model (no plasticity considered)  
+
+---
+
+## Conclusion
+The brake pedal design satisfies all engineering requirements:
+
+- Structural strength ✔️  
+- Safety factor ✔️  
+- Mass target ✔️  
+- Manufacturability ✔️  
+
+The component is **ready for prototyping and physical testing**.
